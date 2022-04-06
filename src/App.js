@@ -21,35 +21,19 @@ const App = () => {
     fetchData()
   }, [])
 
-  const filterCat = (input) => {
-    return console.log(data.categories.filter((data) => (data = input)))
-  }
-
   return (
     <div>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyPress={(e) => {
-          if (e.key == 'Enter') {
-            setInput(filterCat(e.target.value))
-          }
-        }}
-      />
-      <div>result: {input}</div>
+      <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
       {data.length > 0 && (
         <ul className="grid-container">
-          {data.map((item) =>
-            item == input ? (
-              <tbody>
-                <div>{input}</div>
-              </tbody>
-            ) : (
-              <tbody>
+          {data.find((element) => element == input) ? (
+            <div>Result: {input}</div>
+          ) : (
+            data.map((item) => (
+              <tbody id="tbody">
                 <div>{item}</div>
               </tbody>
-            )
+            ))
           )}
         </ul>
       )}
