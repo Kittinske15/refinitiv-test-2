@@ -8,11 +8,9 @@ const App = () => {
   const fetchData = () => {
     fetch('https://api.publicapis.org/categories')
       .then((response) => {
-        console.log('response: ', response)
         return response.json()
       })
       .then((data) => {
-        console.log('data: ', data.categories)
         setData(data.categories)
       })
   }
